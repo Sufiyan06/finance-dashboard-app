@@ -1,0 +1,12 @@
+streamlit
+newsapi-python
+yfinance
+pandas
+numpy
+plotly
+pytrends
+openmeteo-requests
+requests-cache
+retry-requests
+openai
+requests
