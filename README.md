@@ -7,7 +7,7 @@ Add `docs/screenshot.png` before publishing (capture from the Overview tab).
 ## Architecture
 
 ```
-app.py                          # Application entry point
+finance_dashboard.py            # Application entry point
 finance_dashboard/
   config.py                     # Paths, env vars, tab labels
   models.py                     # Typed state objects (selection, market snapshot)
@@ -26,7 +26,6 @@ finance_dashboard/
   ui/
     sidebar.py                  # Universe + date controls
     tabs/                       # One module per dashboard tab
-finance_dashboard.py            # Legacy entry point (same as app.py)
 .streamlit/config.toml          # Theme and server defaults
 ```
 
@@ -69,7 +68,7 @@ cp .env.example .env   # add NEWS_API_KEY
 ## Run
 
 ```bash
-streamlit run app.py
+streamlit run finance_dashboard.py
 ```
 
 ## Environment variables
