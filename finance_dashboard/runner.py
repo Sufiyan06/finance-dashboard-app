@@ -1,6 +1,6 @@
 import streamlit as st
 
-from finance_dashboard.config import APP_TAGLINE, APP_TITLE, TAB_LABELS, get_news_api_key
+from finance_dashboard.config import APP_TAGLINE, APP_TITLE, TAB_LABELS
 from finance_dashboard.data.companies import load_company_universe
 from finance_dashboard.data.market import build_market_snapshot, load_market_data
 from finance_dashboard.theme import inject_global_styles, render_page_header
@@ -12,13 +12,6 @@ def run() -> None:
     st.set_page_config(page_title=APP_TITLE, layout="wide", initial_sidebar_state="expanded")
 
     inject_global_styles()
-
-    if not get_news_api_key():
-        st.error(
-            "NEWS_API_KEY is not set. Locally: copy `.env.example` to `.env`. "
-            "On Streamlit Cloud: add NEWS_API_KEY under App settings → Secrets."
-        )
-        st.stop()
 
     company_to_ticker, ticker_to_company = load_company_universe()
     selection = render_sidebar(company_to_ticker, ticker_to_company)
