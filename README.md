@@ -2,7 +2,6 @@
 
 A modular **Streamlit** research dashboard for US equities — price action, technical indicators, fundamentals, news, portfolio simulation, and alternative data overlays.
 
-Add `docs/screenshot.png` before publishing (capture from the Overview tab).
 
 ## Architecture
 
