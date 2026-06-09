@@ -3,7 +3,7 @@ from datetime import datetime, timedelta
 import streamlit as st
 from newsapi import NewsApiClient
 
-from finance_dashboard.config import NEWS_API_KEY
+from finance_dashboard.config import get_news_api_key
 
 _news_client: NewsApiClient | None = None
 
@@ -11,9 +11,10 @@ _news_client: NewsApiClient | None = None
 def get_news_client() -> NewsApiClient:
     global _news_client
     if _news_client is None:
-        if not NEWS_API_KEY:
+        key = get_news_api_key()
+        if not key:
             raise RuntimeError("NEWS_API_KEY is not configured")
-        _news_client = NewsApiClient(api_key=NEWS_API_KEY)
+        _news_client = NewsApiClient(api_key=key)
     return _news_client
 
 

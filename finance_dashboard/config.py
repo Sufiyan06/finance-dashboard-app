@@ -12,7 +12,18 @@ CACHE_DIR = ROOT_DIR / ".cache"
 APP_TITLE = "Equity Analytics"
 APP_TAGLINE = "Multi-asset research workspace for price, risk, fundamentals, and macro signals."
 
-NEWS_API_KEY = os.getenv("NEWS_API_KEY")
+
+def get_news_api_key() -> str | None:
+    """Local dev: .env via os.getenv. Streamlit Cloud: st.secrets."""
+    key = os.getenv("NEWS_API_KEY")
+    if key:
+        return key
+    try:
+        import streamlit as st
+
+        return st.secrets.get("NEWS_API_KEY")
+    except Exception:
+        return None
 
 WEATHER_ARCHIVE_MIN_YEAR = 1940
 MIDWEST_LATITUDE = 41.8781
